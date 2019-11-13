@@ -228,8 +228,8 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  /* CODE HERE */
-
+  return runners.filter(runner => runner.shirt_size === tShirtSize)
+  //const result = words.filter(word => word.length > 6);
 }
 
 /**
@@ -268,8 +268,7 @@ function tallyUpDonations(runners) {
 function counterMaker() {
   let count = 0;
   return function counter() {
-    count++;
-    return count;
+    return count++;
   }
 }
 
@@ -293,14 +292,21 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(limit) {
-  /* CODE HERE */
-  // const caps = runners.map(function (name) {
-  //   return name.first_name.toUpperCase();
-  // })
-  // return caps
-
-
+function counterMakerWithLimit(max) {
+  let num = 0;
+  const countFnc = function () {
+    let result = num;
+    // if num reach 3 then reset num back to zero
+    if (num < max) {
+      num++;
+      return result;
+    }
+    else {
+      num = 0;
+    }
+    return result;
+  };
+  return countFnc;
 }
 
 /////////////// END OF CHALLENGE ///////////////
